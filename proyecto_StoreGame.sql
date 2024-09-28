@@ -37,3 +37,7 @@ CREATE TABLE Juego (
 );
 
 SELECT*FROM Juego;
+
+
+ALTER TABLE TipoJuego ADD INDEX buscar_categoria(categoria);
+ALTER TABLE Juego ADD INDEX buscar_por_precio(precio);
