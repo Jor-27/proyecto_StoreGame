@@ -41,3 +41,28 @@ SELECT*FROM Juego;
 
 ALTER TABLE TipoJuego ADD INDEX buscar_categoria(categoria);
 ALTER TABLE Juego ADD INDEX buscar_por_precio(precio);
+ RENAME TABLE Factura TO Recibo; 
+ 
+INSERT INTO Usuario (id_usuario, correo, contraseña)
+VALUES (2, 'usariozz2m@uan.edu.co', 45783), (3, 'dguayara32@uan.edu.co', 89890), (4, 'jcardoso44@uan.edu.co', 23451), (5, 'dzartha33@uan.edu.co', 90911), (6, 'arueda33@uan.edu.co', 31456), (7, 'mreyes22@uan.edu.co', 11111);
+
+ALTER TABLE Juego
+CHANGE unudades_vendidas unidades_vendidas INT;
+
+INSERT INTO Juego (nombre, desarrollador, tamaño, precio, unidades_disponibles, unidades_vendidas, fecha_de_lanzamiento)
+Values ('The adventure of Zelda', 'Nintendo', 8.5, 30, 5, 30, '2017-03-3');
+
+
+CREATE USER 'DavidZartha'@'3306' IDENTIFIED BY 'My.Territory/SQL'; 
+GRANT SELECT, INSERT ON proyecto_storegame.Usuario TO 'DavidZartha'@'3306';
+GRANT SELECT, INSERT ON proyecto_storegame.Juego TO 'DavidZartha'@'3306';
+REVOKE SELECT, INSERT ON proyecto_storegame.Juego FROM 'DavidZartha'@'3306';
+
+SHOW GRANTS FOR 'DavidZartha'@'3306';
+
+CREATE VIEW Usuario_VISION AS
+SELECT id_usuario, correo
+FROM Usuario
+WHERE id_usuario >= 4 and id_usuario <= 6;
+
+SELECT*FROM Usuario_VISION; 
